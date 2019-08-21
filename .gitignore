@@ -61,3 +61,6 @@ typings/
 .next
 .vscode
 .DS_Store
+
+build
+dist

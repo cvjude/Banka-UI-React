@@ -1,16 +1,17 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { resolve } = require('path');
 
 const htmlPlugin = new HtmlWebpackPlugin({
-  template: "./src/index.html",
-  filename: "./index.html"
+  template: resolve(__dirname, 'public', 'index.html'),
+  filename: './index.html'
 });
 
 const cssPlugin = new MiniCssExtractPlugin({
-  filename: "[name].css",
-  chunkFilename: "[id].css",
+  filename: '[name].css',
+  chunkFilename: '[id].css',
   ignoreOrder: false
-})
+});
 
 module.exports = (env, argv) => {
   const { mode } = argv;
@@ -20,11 +21,11 @@ module.exports = (env, argv) => {
         {
           test: /\.css$/,
           use: [
-            mode === "development"
-              ? "style-loader"
+            mode === 'development'
+              ? 'style-loader'
               : MiniCssExtractPlugin.loader,
             {
-              loader: "css-loader"
+              loader: 'css-loader'
             }
           ]
         },
@@ -43,15 +44,15 @@ module.exports = (env, argv) => {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader',
+            loader: 'babel-loader'
           }
         }
-      ],
+      ]
     },
     plugins: [htmlPlugin, cssPlugin],
     devServer: {
       historyApiFallback: true,
       port: 8000
     }
-  }
+  };
 };

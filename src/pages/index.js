@@ -1,7 +1,17 @@
-import React from "react";
+import React from 'react';
+import Homepage from './Homepage';
+import NavBar from '../components/NavBar';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const index = () => {
-  return <div data-test="appComponent">Welcome to the backApp</div>;
+  return (
+    <Router>
+      <section data-test="appComponent">
+        <NavBar />
+        <Route exact path="/home" component={Homepage} />
+      </section>
+    </Router>
+  );
 };
 
 export default index;

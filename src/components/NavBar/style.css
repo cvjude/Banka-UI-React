@@ -1,0 +1,147 @@
+a {
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  background-clip: padding-box;
+  padding: 5px 5px;
+  width: 100%;
+  border-radius: 0px;
+  z-index: 999;
+  margin-bottom: 0px;
+  transition: color 0.5s ease-in-out;
+  clear: both;
+}
+
+.navbar > .container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  max-width: 960px;
+  justify-content: space-between;
+}
+
+.navbar-nav {
+  display: flex;
+  margin-top: 0;
+  padding-left: 0px;
+  margin-bottom: 0px;
+  list-style: none;
+  text-align: center;
+}
+
+.navbar .navbar-nav a {
+  font-size: 17px;
+  background-color: transparent !important;
+  padding: 7px 0 !important;
+  position: relative;
+  margin: 0 12px;
+  transition: all 0.4s;
+}
+
+.navbar .nav-container label {
+  display: none;
+  color: white;
+  width: 26px;
+  float: right;
+  font-size: 150%;
+  padding-top: 0.3em;
+}
+
+#toggle {
+  display: none;
+}
+
+.navbar-nav a:hover,
+.navbar-nav a .active {
+  color: #e53739;
+}
+
+.logo {
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  line-height: inherit;
+  white-space: nowrap;
+  color: #f24259;
+}
+
+@media only screen and (max-width: 790px) {
+  .navbar .nav-container label {
+    display: block;
+    cursor: pointer;
+    color: black;
+  }
+
+  .collapse {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -500px;
+    left: 0px;
+    right: 0;
+    transition: all 0.5s;
+    overflow: hidden;
+    z-index: -1;
+    box-shadow: 0px 1px 12px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar {
+    padding: 0;
+  }
+
+  .navbar .container {
+    position: relative;
+  }
+
+  .navbar .container,
+  .navbar,
+  .nav-link,
+  .navbar-nav {
+    display: block;
+  }
+
+  #toggle:checked + .collapse,
+  #toggle:checked + .collapse .navbar-nav {
+    top: 50px;
+  }
+
+  .nav-link a {
+    margin: 0px;
+  }
+
+  .btn-custom {
+    margin: auto;
+  }
+
+  .navbar {
+    height: auto;
+    width: 100%;
+  }
+
+  .nav-container,
+  .collapse {
+    background-color: white;
+    padding: 5px 30px;
+  }
+
+  .navbar .navbar-nav a {
+    color: black;
+  }
+
+  .logo {
+    color: #f24259;
+  }
+}
+
+.activeRoute {
+  color: #f24259;
+}

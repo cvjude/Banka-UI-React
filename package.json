@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "start": "npm run build && babel -d ./build ./server && node build",
+    "start": "node build/index.js",
     "dev": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production && babel -d ./build ./server",
     "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
@@ -33,9 +33,7 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -60,6 +58,8 @@
     "jest": "^24.9.0",
     "mini-css-extract-plugin": "^0.8.0",
     "style-loader": "^1.0.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0"
   },
   "husky": {

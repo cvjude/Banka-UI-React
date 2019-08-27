@@ -8,10 +8,11 @@
   },
   "scripts": {
     "test": "jest --coverage",
-    "start": "node build/index.js",
-    "dev": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production && babel -d ./build ./server",
-    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "start": "node ./dist/server.js",
+    "dev": "webpack-dev-server --mode development --config webpack.dev.config.js --open",
+    "build": "rm -rf dist && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "clean": "rm -rf build && rm -rf dist"
   },
   "repository": {
     "type": "git",
@@ -56,15 +57,22 @@
     "eslint": "^6.2.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "file-loader": "^4.2.0",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "mini-css-extract-plugin": "^0.8.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "style-loader": "^1.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "url-loader": "^2.1.0",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-middleware": "^3.7.0",
+    "webpack-dev-server": "^3.8.0",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-node-externals": "^1.7.2"
   },
   "husky": {
     "hooks": {

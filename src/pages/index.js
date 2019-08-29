@@ -8,6 +8,7 @@ const index = () => {
     <Router>
       <section data-test="appComponent">
         <NavBar />
+        <Route exact path="/" component={Homepage} />
         <Route exact path="/home" component={Homepage} />
       </section>
     </Router>

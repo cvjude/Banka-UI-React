@@ -15,6 +15,7 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fff;
+  overflow: hidden;
 }
 
 .container{
@@ -23,4 +24,16 @@ body {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+
+@-webkit-keyframes autofill{
+  to {
+      color: #655;
+      background: white;
+  }
+}
+
+input:-webkit-autofill{
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
 }

@@ -9,8 +9,8 @@
   "scripts": {
     "test": "jest --coverage",
     "start": "node ./dist/server.js",
-    "dev": "webpack-dev-server --mode development --config webpack.dev.config.js --open",
-    "build": "rm -rf dist && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
+    "dev": "webpack-dev-server --mode development --config ./webpackConfig/webpack.dev.config.js --open",
+    "build": "rm -rf dist && webpack --mode production --config webpackConfig/webpack.server.config.js && webpack --mode production --config webpackConfig/webpack.prod.config.js",
     "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "clean": "rm -rf build && rm -rf dist"
   },
@@ -30,14 +30,24 @@
   "homepage": "https://github.com/cvjude/Banka-UI-React#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "check-prop-types": "^1.1.2",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "path": "^0.12.7",
+    "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.39.3",
+    "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -47,6 +57,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.5.5",
+    "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "coveralls": "^3.0.6",
@@ -55,24 +66,30 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.4.0",
     "eslint": "^6.2.0",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-import-resolver-webpack": "^0.11.1",
+    "eslint-loader": "^3.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
     "file-loader": "^4.2.0",
     "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
-    "mini-css-extract-plugin": "^0.8.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "jest-css-modules": "^2.1.0",
+    "moxios": "^0.4.0",
+    "nock": "^11.3.1",
+    "node-sass": "^4.12.0",
+    "redux-mock-store": "^1.5.3",
+    "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
-    "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^2.1.0",
-    "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",
     "webpack-dev-middleware": "^3.7.0",
     "webpack-dev-server": "^3.8.0",
-    "webpack-hot-middleware": "^2.25.0",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-hot-middleware": "^2.25.0"
   },
   "husky": {
     "hooks": {
@@ -88,7 +105,7 @@
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "identity-obj-proxy"
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
     }
   }
 }

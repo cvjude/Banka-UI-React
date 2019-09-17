@@ -6,12 +6,12 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './src/index.js'
+    main: './src/index.js',
   },
   output: {
-    path: __dirname + '/dist',
+    path: join(__dirname, '../dist'),
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name].js',
   },
   target: 'web',
   devtool: 'source-map',
@@ -20,47 +20,45 @@ module.exports = {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true
+        sourceMap: true,
       }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
+        loader: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.html$/,
         use: [
           {
             loader: 'html-loader',
-            options: { minimize: true }
-          }
-        ]
+            options: { minimize: true },
+          },
+        ],
       },
       {
         test: /\.jpg$/,
-        use: [{ loader: 'url-loader' }]
+        use: [{ loader: 'url-loader' }],
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
-      }
-    ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: resolve(__dirname, 'public', 'index.html'),
-      filename: './index.html'
+      template: resolve(__dirname, '../public', 'index.html'),
+      filename: './index.html',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: '[id].css'
-    })
-  ]
+      chunkFilename: '[id].css',
+    }),
+  ],
 };

@@ -3,9 +3,7 @@ import React from 'react';
 import App from './index';
 import { findByTestAttribute } from '../../helpers';
 
-const setUp = () => {
-  return shallow(<App />);
-};
+const setUp = () => shallow(<App />);
 
 describe('The app component tests', () => {
   let Wrapper;

@@ -11,7 +11,7 @@ describe('The app component tests', () => {
     Wrapper = setUp();
   });
   it('should render without errors', () => {
-    const component = findByTestAttribute(Wrapper, 'homeComponent');
+    const component = findByTestAttribute(Wrapper, 'loginComponent');
     expect(component.length).toBe(1);
   });
 });
